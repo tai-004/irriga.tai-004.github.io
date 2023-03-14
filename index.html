@@ -1,0 +1,196 @@
+<html>
+    <head>
+
+        <title> Sistema de irrigação</title>
+        <!--style reponsivo e BS-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+
+        
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    </head>
+
+    <!--Style css-->
+    <style>
+        body{
+    background-color: rgb(236, 236, 236);
+}
+nav {
+    
+        background-color: #8ccfff;
+        
+    
+}
+.titulo{
+    color: rgb(255, 255, 255);
+    align-items: center;
+    text-align: center;
+    font-size: 8px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.painel{
+    text-align: center;
+}
+.title2{
+    color: rgb(73, 94, 111);
+    align-items: center;
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.titulo2{
+    color: rgb(52, 52, 105);
+    text-align: left;
+    font-size: medium;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.titulo3{
+  font-size: 24px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.text1{
+    font-size: 16px;
+    font-family: 'Arial', 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+    text-align: justify;
+}
+    </style>
+
+    <!---->
+
+    <body>
+ 
+        <div class="navbar-fixed">
+            <nav class="nav-extended">
+              <div class="nav-wrapper">
+              
+            <div class="titulo">
+                <p class="h3">
+            MONITORAMENTO DE IRRIGAÇÃO 
+            AUTOMATIZADA PARA CANTEIROS
+        </p>
+        <p class="h5">Sistema IoT com Firebase</p>
+    </div></div></nav>
+</div>    <br><br>   <br><br>   <br><br>
+    <div class="painel">
+        <div class="row">
+      
+            <div class="col-sm-4"> 
+                  <div class="card">
+                    <div class="card-image center">
+                        <div class=""></div>
+                        <div class="titulo3">
+                      <span id="temar" class="statistic">-</span>
+                    </div></div>
+                    <div class="card-content">
+                        <div class="imag1">
+                            <img src="termometro.png" height="120px" width="120px">
+                        </div>
+                      <span class="titulo2">
+                        Temperatura do Ar 
+                       
+                      </span></div></div></div>
+                      <div class="col-sm-4"> 
+                        <div class="card">
+                          <div class="card-image center">
+                            <div class="titulo3">
+                            <span id="umidar" class="statistic">-</span>
+                          </div></div>
+                          <div class="card-content">
+                            <div class="imag1">
+                                <img src="um1.png" height="120px" width="120px">
+                            </div>
+                            <span class="titulo2">
+                              Umidade do Ar 
+                             
+                            </span></div></div></div>
+                            <div class="col-sm-4"> 
+                                <div class="card">
+                                  <div class="card-image center">
+                                    <div class="titulo3">
+                                    <span id="umidsolo" class="statistic">-</span>
+                                  </div></div>
+                                  <div class="card-content">
+                                    <div class="imag1">
+                                        <img src="gota.png" height="120px" width="120px">
+                                    </div>
+                                    <span class="titulo2">
+                                      Umidade do solo 
+                                     
+                                    </span></div></div></div></div>
+          <br><br><br>
+          <div class="row">
+            <div class="col-sm-7">
+          <h2 id="soma">gráfico</h2> <!--valor da umidade do solo --></div>
+          <div class="col-sm-4">
+          <div class="text1">
+          Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hampden-Sydney College na Virginia, pesquisou uma das mais obscuras palavras em latim, consectetur, oriunda de uma passagem de Lorem Ipsum, e, procurando por entre citações da palavra na literatura clássica, descobriu a sua indubitável origem. Lorem Ipsum vem das seções 1.10.32 e 1.10.33 do "de Finibus Bonorum et Malorum" (Os Extremos do Bem e do Mal), de Cícero, escrito em 45 AC. Este livro é um tratado de teoria da ética muito popular na época da Renascença. A primeira linha de Lorem Ipsum, "Lorem Ipsum dolor sit amet..." vem de uma linha na seção 1.10.32.<div></div></div>
+      
+
+</div>
+<br><br>
+
+<br>
+<br>     <canvas id="umidLineChart">-</canvas>
+                    </div></div></center></div>
+    </div> 
+        <script>
+
+            const firebaseConfig = {
+              "apiKey": "AIzaSyAo6vJm_hw4iOlZdDBMyTwbHTT05L3L83o",
+              "authDomain": "duda-bdae3.firebaseapp.com",
+              "databaseURL": "https://duda-bdae3-default-rtdb.firebaseio.com",
+              "projectId": "duda-bdae3",
+              "storageBucket": "duda-bdae3.appspot.com",
+              "messagingSenderId": "93599123610",
+              "appId": "1:93599123610:web:988b026796672a2c4a7723",
+              "measurementId": "G-GJFQ31E192"
+              };
+              
+                    firebase.initializeApp(firebaseConfig);
+            
+            var umidar = document.getElementById('umidar');
+            
+            var x = firebaseRef = firebase.database().ref().child("umidar");
+            x.on('value', function(datasnapshot){
+                umidar.innerText = datasnapshot.val();
+            })
+
+            var temar = document.getElementById('temar');
+            
+            var x = firebaseRef = firebase.database().ref().child("temar");
+            x.on('value', function(datasnapshot){
+                temar.innerText = datasnapshot.val();
+            })
+
+            var umidsolo = document.getElementById('umidsolo');
+            
+            var x = firebaseRef = firebase.database().ref().child("umidsolo");
+            x.on('value', function(datasnapshot){
+                umidsolo.innerText = datasnapshot.val();
+            })
+
+            var db = firebase.database();
+            var umidsoloRef = db.ref('umidsolo');
+            
+                     </script>
+        </div>
+    </body>
+</html>
